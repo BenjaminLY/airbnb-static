@@ -1,10 +1,98 @@
 ---
 title: Le Wagon Middleman boilerplate
 ---
-
-<div class="welcome text-center padded">
+<!-- <div class="welcome text-center padded">
   <h1>Welcome to Middleman</h1>
   <p class="doc">
     <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
   </p>
+</div> -->
+
+<!-- Your banner code -->
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'background.jpeg' %>');">
+  <div class="banner-content">
+    <h1>WELCOME HOME</h1>
+    <p>Very cool stuff, useful and smart</p>
+    <a class="btn btn-primary btn-lg">GET IT</a>
+  </div>
 </div>
+
+<div class="container text-center padded features">
+  <div class="row">
+    <% ['beer', 'dollar', 'globe', 'heart'].each do |feature| %>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <%= image_tag "#{feature}.png" %>
+      <h3>Discover <%= feature %></h3>
+      <p>The earth is your new home.</p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Your cards code -->
+
+<div class="wrapper-blue">
+  <div class="container">
+    <div class="row">
+      <% ['adrien', 'ben', 'coline'].each do |card| %>
+        <div class="col-xs-12 col-md-4">
+          <div class="card" style="background-image: url('<%= image_path "#{card}-pic.jpeg" %>')">
+            <h3 class="card-category">Destination</h3>
+            <%= image_tag "#{card}.jpeg", class: "card-user avatar-large" %>
+            <div class="card-description">
+              <h2><%= card.capitalize %>'s home</h2>
+              <p>It is so much fun !</p>
+            </div>
+            <a href="#" class="card-link"></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Your newsletter code -->
+<div class="wrapper-grey">
+  <div class="container text-center features">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+        <h2>Get news from us</h2>
+        <form action="#">
+          <div class="form-group">
+            <label>Your email</label>
+            <input type="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Your password</label>
+            <input type="password" class="form-control">
+          </div>
+          <input type="submit" value="Sing in" class="btn btn-primary btn-lg">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Your map code -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script type="text/javascript">
+var myLatlng = new google.maps.LatLng(48.8452285,2.4360864);
+
+var myOptions = {
+  zoom: 16,
+  center: myLatlng,
+  scrollwheel: true,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}] // TODO: replace [] by array from https://snazzymaps.com/
+};
+
+var map = new google.maps.Map(document.getElementById('map'), myOptions);
+var marker = new google.maps.Marker({
+  position: myLatlng,
+  map: map,
+  title: "You are here!"
+});
+</script>
